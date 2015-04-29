@@ -577,7 +577,7 @@ proc/process_ghost_teleport_locs()
 
 
 
-
+/*
 /area/holodeck
 	name = "\improper Holodeck"
 	icon_state = "Holodeck"
@@ -613,7 +613,7 @@ proc/process_ghost_teleport_locs()
 
 /area/holodeck/source_wildlife
 	name = "\improper Holodeck - Wildlife Simulation"
-
+*/
 
 
 
