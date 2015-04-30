@@ -1,4 +1,4 @@
-/proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0, var/atom/newloc = null)
+/proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0, var/atom/newloc = null, var/nerf = 0)
 	if(!original)
 		return null
 	var/obj/O
@@ -19,10 +19,18 @@
 				continue	// this would reference the original's object, that will break when it is used or deleted.
 			else
 				O.vars[V] = original.vars[V]
+
+	if(nerf && istype(O,/obj/item))
+		var/obj/item/I = O
+		I.damtype = STAMINA // thou shalt not
+	if(istype(O,/obj/machinery))
+		var/obj/machinery/M = O
+		M.power_change()
+	O.update_icon()
 	return O
 
 
-/area/proc/copy_contents_to(var/area/A , var/platingRequired = 0 )
+/area/proc/copy_contents_to(var/area/A , var/platingRequired = 0, var/nerf_weapons = 0 )
 	//Takes: Area. Optional: If it should copy to areas that don't have plating
 	//Returns: Nothing.
 	//Notes: Attempts to move the contents of one area to another area.
@@ -79,7 +87,7 @@
 		X.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
 
 		for(var/obj/O in T)
-			var/obj/O2 = DuplicateObject(O , 1, newloc = X)
+			var/obj/O2 = DuplicateObject(O , 1, newloc = X, nerf=nerf_weapons)
 			if(!O2) continue
 			copiedobjs += O2.contents + O2
 

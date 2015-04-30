@@ -27,10 +27,10 @@
 		dat += "<br>"
 		if(emagged)
 			dat += "Safety protocol: <span class='bad'>Offline</span> <a href='?\ref[src];safety=1'>Engage</a><br>"
+			for(var/area/A in emag_programs)
+				dat += "<a href='?src=\ref[src];loadarea=[A.type]'>[A.name]</a><br>"
 		else
 			dat += "Safety protocol: <span class='good'>Online</span> <a href='?\ref[src];safety=0'>Disengage</a><br>"
-		for(var/area/A in emag_programs)
-			dat += "<a href='?src=\ref[src];loadarea=[A.type]'>[A.name]</a><br>"
 
 	var/datum/browser/popup = new(user, "computer", name, 400, 500)
 	popup.set_content(dat)
@@ -67,7 +67,9 @@
 		derez(item)
 
 	program = A
-	spawned = A.copy_contents_to(linked, 1)
+	// note nerfing does not yet work on guns, should
+	// should also remove/limit/filter reagents?
+	spawned = A.copy_contents_to(linked, 1, nerf_weapons = !emagged)
 	effects = list()
 
 	spawn(30)
@@ -81,6 +83,9 @@
 
 	if(!obj)
 		return
+	var/turf/T = get_turf(obj)
+	for(var/atom/movable/AM in obj.contents) // these should be derezed if they were generated
+		AM.loc = T							// otherwise make sure they are dropped
 
 	if(istype(obj))
 		var/mob/M = obj.loc

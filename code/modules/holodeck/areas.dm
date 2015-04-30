@@ -59,7 +59,7 @@
 /area/holodeck/rec_center/court
 	name = "Holodeck - Empty Court"
 
-/area/holodeck/rec_center/boxing
+/area/holodeck/rec_center/dodgeball
 	name = "Holodeck - Dodgeball Court"
 
 /area/holodeck/rec_center/basketball
@@ -74,6 +74,8 @@
 /area/holodeck/rec_center/lounge
 	name = "Holodeck - Lounge"
 
+/area/holodeck/rec_center/medical
+	name = "Emergency Medical"
 
 
 // Bad programs
