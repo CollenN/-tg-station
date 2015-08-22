@@ -32,6 +32,11 @@ var/global/list/ears_list = list()
 var/global/list/frills_list = list()
 var/global/list/spines_list = list()
 var/global/list/animated_spines_list = list()
+	//Bird Bits
+var/global/list/tails_list_bird = list()
+var/global/list/beaks_list = list()
+var/global/list/frills_list_bird = list()
+var/global/list/body_list_bird = list()
 	//Backpacks
 var/global/list/backbaglist = list("Backpack", "Satchel")
 	//Female Uniforms

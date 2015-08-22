@@ -100,13 +100,26 @@
 					S = ears_list[features["ears"]]
 				if("body_markings")
 					S = body_markings_list[features["body_markings"]]
-
+				if("tail_bird")
+					S = tails_list_bird[features["tail_bird"]]
+				if("beak")
+					S = beaks_list[features["beak"]]
+				if("frills_bird")
+					S = frills_list_bird[features["frills_bird"]]
+				if("body_bird")
+					S = body_list_bird[features["body_bird"]]
 			if(!S || S.icon_state == "none")
 				continue
 
 			//A little rename so we don't have to use tail_lizard or tail_human when naming the sprites.
-			if(bodypart == "tail_lizard" || bodypart == "tail_human")
+			if(bodypart == "tail_lizard" || bodypart == "tail_bird" || bodypart == "tail_human")
 				bodypart = "tail"
+
+			if(bodypart == "frills_bird")
+				bodypart = "frills"
+
+			if(bodypart == "body_bird")
+				bodypart = "body"
 
 			if(S.hasinner)
 				preview_icon.Blend(new/icon("icon" = 'icons/mob/mutant_bodyparts.dmi', "icon_state" = "[pref_species.id]_m_[bodypart]inner_[S.icon_state]_[layer]"), ICON_OVERLAY)

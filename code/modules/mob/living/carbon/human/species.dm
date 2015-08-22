@@ -313,6 +313,22 @@
 		if(!H.dna.features["ears"] || H.dna.features["ears"] == "None" || H.head && (H.head.flags & BLOCKHAIR) || (H.wear_mask && (H.wear_mask.flags & BLOCKHAIR)))
 			bodyparts_to_add -= "ears"
 
+	if("beak" in mutant_bodyparts)
+		if(H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE))
+			bodyparts_to_add -= "beak"
+
+	if("tail_bird" in mutant_bodyparts)
+		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+			bodyparts_to_add -= "tail_bird"
+
+	if("frills_bird" in mutant_bodyparts)
+		if(!H.dna.features["frills_bird"] || H.dna.features["frills_bird"] == "None" || H.head && (H.head.flags_inv & HIDEEARS))
+			bodyparts_to_add -= "frills_bird"
+
+	if("body_bird" in mutant_bodyparts)
+		if(!H.dna.features["body_bird"])
+			bodyparts_to_add -= "body_bird"
+
 	if(!bodyparts_to_add)
 		return
 
@@ -346,16 +362,28 @@
 					S = ears_list[H.dna.features["ears"]]
 				if("body_markings")
 					S = body_markings_list[H.dna.features["body_markings"]]
-
+				if("tail_bird")
+					S = tails_list_bird[H.dna.features["tail_bird"]]
+				if("beak")
+					S = beaks_list[H.dna.features["beak"]]
+				if("frills_bird")
+					S = frills_list_bird[H.dna.features["frills_bird"]]
+				if("body_bird")
+					S = body_list_bird[H.dna.features["body_bird"]]
 			if(!S || S.icon_state == "none")
 				continue
 
 			//A little rename so we don't have to use tail_lizard or tail_human when naming the sprites.
-			if(bodypart == "tail_lizard" || bodypart == "tail_human")
+			if(bodypart == "tail_lizard" || bodypart == "tail_bird" || bodypart == "tail_human")
 				bodypart = "tail"
 			else if(bodypart == "waggingtail_lizard" || bodypart == "waggingtail_human")
 				bodypart = "waggingtail"
 
+			if(bodypart == "frills_bird")
+				bodypart = "frills"
+
+			if(bodypart == "body_bird")
+				bodypart = "body"
 
 			var/icon_string
 

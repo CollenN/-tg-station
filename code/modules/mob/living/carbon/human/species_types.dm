@@ -413,27 +413,15 @@ datum/species/human/spec_death(gibbed, mob/living/carbon/human/H)
  BIRD PEOPLE -- ALSO A WIP IN PROGRESS
  */
 
-/*/datum/species/bird
+/datum/species/bird
 	name = "Aven"
 	id = "bird"
 	desc = "Stuff goes here."
-	specflags = list(HAIR,MUTCOLORS,EYECOLOR)
-	say_mod = "hisses"
-	spec_hair = 1
-	hair_color = "mutcolor"
-	speedmod = -1
-	no_equip = list(slot_wear_mask, slot_shoes)
+	specflags = list(MUTCOLORS,EYECOLOR)
+	mutant_bodyparts = list("tail_bird", "beak", "frills_bird", "body_bird")
+	default_features = list("mcolor" = "00F", "tail_bird" = "Up", "beak" = "Thin", "frills_bird" = "None", "body_bird" = "Yellow")
+	//speedmod = -1
 	roundstart = 1
-
-/*/datum/species/bird/before_equip_job(var/datum/job/J, var/mob/living/carbon/human/H)
-	H.equip_to_slot(new /obj/item/weapon/tank/co2(H), slot_r_store)
-	H.equip_to_slot(new /obj/item/clothing/mask/breath(H), slot_wear_mask)*/
-
-/datum/species/bird/after_equip_job(var/datum/job/J, var/mob/living/carbon/human/H)
-	if(H.job == "Head of Security" || H.job == "Warden" || H.job == "Security Officer")
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roman(H), slot_shoes)
-	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H), slot_shoes)*/
 
 /datum/species/abductor
 	name = "Abductor"

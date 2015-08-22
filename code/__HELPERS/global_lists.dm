@@ -25,7 +25,11 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/frills, frills_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/spines, spines_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/spines_animated, animated_spines_list)
-
+	//bird bodyparts
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/beaks, beaks_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/bird, tails_list_bird)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/birdfrills, frills_list_bird)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/body_bird, body_list_bird)
 	//spec hair
 	//init_species_accessory_subtypes(/datum/sprite_accessory/species/lizard, spec_hair_lizard_list)
 	//init_species_accessory_subtypes(/datum/sprite_accessory/species/bird, spec_hair_bird_list)

@@ -61,7 +61,7 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
-	var/list/features = list("mcolor" = "FFF", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None")
+	var/list/features = list("mcolor" = "FFF", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "beak" = "Thin", "tail_bird" = "Up", "frills_bird" = "None", "body_bird" = "Yellow")
 
 	var/list/custom_names = list("clown", "mime", "ai", "cyborg", "religion", "deity")
 
@@ -305,6 +305,42 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 						dat += "<h3>Body Markings</h3>"
 
 						dat += "<a href='?_src_=prefs;preference=body_markings;task=input'>[features["body_markings"]]</a><BR>"
+
+						dat += "</td>"
+
+					if("beak" in pref_species.mutant_bodyparts)
+						dat += "<td valign='top' width='7%'>"
+
+						dat += "<h3>Beak</h3>"
+
+						dat += "<a href='?_src_=prefs;preference=beak;task=input'>[features["beak"]]</a><BR>"
+
+						dat += "</td>"
+
+					if("tail_bird" in pref_species.mutant_bodyparts)
+						dat += "<td valign='top' width='7%'>"
+
+						dat += "<h3>Tail</h3>"
+
+						dat += "<a href='?_src_=prefs;preference=tail_bird;task=input'>[features["tail_bird"]]</a><BR>"
+
+						dat += "</td>"
+
+					if("frills_bird" in pref_species.mutant_bodyparts)
+						dat += "<td valign='top' width='7%'>"
+
+						dat += "<h3>Frills</h3>"
+
+						dat += "<a href='?_src_=prefs;preference=frills_bird;task=input'>[features["frills_bird"]]</a><BR>"
+
+						dat += "</td>"
+
+					if("body_bird" in pref_species.mutant_bodyparts)
+						dat += "<td valign='top' width='7%'>"
+
+						dat += "<h3>Arms/Feet</h3>"
+
+						dat += "<a href='?_src_=prefs;preference=body_bird;task=input'>[features["body_bird"]]</a><BR>"
 
 						dat += "</td>"
 
@@ -878,6 +914,30 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 						new_body_markings = input(user, "Choose your character's body markings:", "Character Preference") as null|anything in body_markings_list
 						if(new_body_markings)
 							features["body_markings"] = new_body_markings
+
+					if("beak")
+						var/new_beak
+						new_beak = input(user, "Choose your character's beak:", "Character Preference") as null|anything in beaks_list
+						if(new_beak)
+							features["beak"] = new_beak
+
+					if("tail_bird")
+						var/new_tail_bird
+						new_tail_bird = input(user, "Choose your character's tail:", "Character Preference") as null|anything in tails_list_bird
+						if(new_tail_bird)
+							features["tail_bird"] = new_tail_bird
+
+					if("frills_bird")
+						var/new_frills_bird
+						new_frills_bird = input(user, "Choose your character's frills:", "Character Preference") as null|anything in frills_list_bird
+						if(new_frills_bird)
+							features["frills_bird"] = new_frills_bird
+
+					if("body_bird")
+						var/new_body_bird
+						new_body_bird = input(user, "Choose your character's arms/feet style:", "Character Preference") as null|anything in body_list_bird
+						if(new_body_bird)
+							features["body_bird"] = new_body_bird
 
 					if("s_tone")
 						var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in skin_tones

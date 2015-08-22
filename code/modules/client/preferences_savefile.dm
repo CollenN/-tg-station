@@ -195,6 +195,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_lizard_frills"]			>> features["frills"]
 	S["feature_lizard_spines"]			>> features["spines"]
 	S["feature_lizard_body_markings"]	>> features["body_markings"]
+	S["feature_beak"]					>> features["beak"]
+	S["feature_bird_tail"]				>> features["tail_bird"]
+	S["feature_bird_frills"]			>> features["frills_bird"]
+	S["feature_body_bird"]				>> features["body_bird"]
 	S["clown_name"]			>> custom_names["clown"]
 	S["mime_name"]			>> custom_names["mime"]
 	S["ai_name"]			>> custom_names["ai"]
@@ -255,6 +259,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["frills"] 	= sanitize_inlist(features["frills"], frills_list)
 	features["spines"] 	= sanitize_inlist(features["spines"], spines_list)
 	features["body_markings"] 	= sanitize_inlist(features["body_markings"], body_markings_list)
+	features["feature_beak"] = sanitize_inlist(features["beak"], beaks_list)
+	features["feature_bird_tail"] = sanitize_inlist(features["tail_bird"], tails_list_bird)
+	features["feature_bird_frills"] = sanitize_inlist(features["frills_bird"], frills_list_bird)
+	features["feature_body_bird"] = sanitize_inlist(features["body_bird"], body_list_bird)
 
 	userandomjob	= sanitize_integer(userandomjob, 0, 1, initial(userandomjob))
 	job_civilian_high = sanitize_integer(job_civilian_high, 0, 65535, initial(job_civilian_high))
@@ -304,6 +312,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_lizard_frills"]			<< features["frills"]
 	S["feature_lizard_spines"]			<< features["spines"]
 	S["feature_lizard_body_markings"]	<< features["body_markings"]
+	S["feature_beak"]					<< features["beak"]
+	S["feature_bird_tail"]				<< features["tail_bird"]
+	S["feature_bird_frills"]			<< features["frills_bird"]
+	S["feature_body_bird"]				<< features["body_bird"]
 	S["clown_name"]			<< custom_names["clown"]
 	S["mime_name"]			<< custom_names["mime"]
 	S["ai_name"]			<< custom_names["ai"]
